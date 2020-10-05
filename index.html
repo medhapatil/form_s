@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<body onload="autInit()">
+
+<p id='question'>Please list alternate uses of a toothpick:</p>
+<form>
+    <div id='formDiv'>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+        <br><input type='text' class='inputs'><br>
+    </div>
+</form>
+<script>
+
+var condCount = 0;
+var autTimes = [9000, 15000, 9000, 6000, 3000, 6000];
+var sortTimes = [15000, 9000, 9000, 3000, 6000, 6000];
+var csv = "";
+var conditions = ["brick","toothpick"];
+
+function autInit() {
+    setTimeout(nextCondition, autTimes[condCount]);
+}
+
+function nextCondition() {
+    openWin();
+    var x = document.getElementsByClassName("inputs");
+    for (i = 0; i < x.length; i++) {
+        if (x[i].value != "") {
+            csv += conditions[condCount];
+            csv += ",";
+            csv += x[i].value;
+            x[i].value="";
+            // csv += ",";
+            // if (condCount > 1) {
+            //     csv += "toothpick";
+            // } else {
+            //     csv += "brick";
+            // }
+            csv += "\n";
+        }
+    }
+    condCount += 1;
+    if (condCount == 2) {
+        document.getElementById('question').innerHTML = "Please list alternate uses of a brick:";
+    }
+    document.getElementById('formDiv').innerHTML = "";
+    var newdiv1 = document.createElement('div');
+    newdiv1.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv1);
+    var newdiv2 = document.createElement('div');
+    newdiv2.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv2);
+    var newdiv3 = document.createElement('div');
+    newdiv3.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv3);
+    var newdiv4 = document.createElement('div');
+    newdiv4.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv4);
+    var newdiv5 = document.createElement('div');
+    newdiv5.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv5);
+    var newdiv6 = document.createElement('div');
+    newdiv6.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv6);
+    var newdiv7 = document.createElement('div');
+    newdiv7.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv7);
+    var newdiv8 = document.createElement('div');
+    newdiv8.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv8);
+    var newdiv9 = document.createElement('div');
+    newdiv9.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv9);
+    var newdiv10 = document.createElement('div');
+    newdiv10.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv10);
+    var newdiv11 = document.createElement('div');
+    newdiv11.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv11);
+    var newdiv12 = document.createElement('div');
+    newdiv12.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv12);
+    var newdiv13 = document.createElement('div');
+    newdiv13.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv13);
+    var newdiv14 = document.createElement('div');
+    newdiv14.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv14);
+    var newdiv15 = document.createElement('div');
+    newdiv15.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv15);
+    var newdiv16 = document.createElement('div');
+    newdiv16.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv16);
+    var newdiv17 = document.createElement('div');
+    newdiv17.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv17);
+    var newdiv18 = document.createElement('div');
+    newdiv18.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv18);
+    var newdiv19 = document.createElement('div');
+    newdiv19.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv19);
+    var newdiv20 = document.createElement('div');
+    newdiv20.innerHTML = "<br><input type='text' class='inputs'><br>";
+    document.getElementById('formDiv').appendChild(newdiv20);
+}
+
+function openWin() {
+  var myWindow = window.open("https://medhapatil.github.io/sorting/", "myWindow", "width=1200, height=600");
+  setTimeout(function(){ myWindow.close()
+    if (condCount < 6) {
+        autInit();
+    } else {
+        var hiddenElement = document.createElement('a');
+        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+        hiddenElement.target = '_blank';
+        hiddenElement.download = 'data.csv';
+        hiddenElement.click();
+        document.getElementById('formDiv').innerHTML = "";
+        document.getElementById('question').innerHTML = "Thank you. Please close this window.";
+    } }, sortTimes[condCount]);
+}
+
+
+</script>
+
+</body>
+</html>
+
