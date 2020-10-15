@@ -66,12 +66,22 @@
 <script>
 
 var condCount = 0;
-var autTimes = [90000, 150000, 90000, 60000, 30000, 60000];
+var autTimes = [90000, 150000, 150000, 60000, 30000, 60000];
 var sortTimes = [150000, 90000, 90000, 30000, 60000, 60000];
 var csv = "";
 var condition = "toothpick";
 
 function autInit() {
+    if (condCount == 2) {
+        condition = "brick";
+        document.getElementById('formDiv').innerHTML = "";
+        document.getElementById('question').innerHTML = "Please wait while the next task loads ...";
+        
+        setTimeout(() => {
+            buildForm();
+            document.getElementById('question').innerHTML = "Please list uses of a brick:";
+        }, 60000);
+    }
     setTimeout(nextCondition, autTimes[condCount]);
 }
 
@@ -94,11 +104,28 @@ function nextCondition() {
         }
     }
     condCount += 1;
-    if (condCount == 4) {
-        condition = "brick";
-        document.getElementById('question').innerHTML = "Please list uses of a brick:";
-    }
     document.getElementById('formDiv').innerHTML = "";
+    buildForm();
+}
+
+function openWin() {
+  var myWindow = window.open("https://medhapatil.github.io/sorting/", "myWindow", "width=$(window).width(), height=$(window).height()");
+  setTimeout(function(){ myWindow.close()
+    if (condCount < 6) {
+        autInit();
+    } else {
+        var hiddenElement = document.createElement('a');
+        hiddenElement.href = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURI(csv);
+        hiddenElement.target = '_blank';
+        hiddenElement.download = 'data.xlsx';
+        hiddenElement.click();
+        document.getElementById('formDiv').innerHTML = "";
+        document.getElementById('question').innerHTML = "Thank you. Please close this window.";
+    } }, sortTimes[condCount]);
+    
+}
+
+function buildForm() {
     var newdiv1 = document.createElement('div');
     newdiv1.innerHTML = "<br><input type='text' class='inputs'><br>";
     document.getElementById('formDiv').appendChild(newdiv1);
@@ -161,25 +188,8 @@ function nextCondition() {
     document.getElementById('formDiv').appendChild(newdiv20);
 }
 
-function openWin() {
-  var myWindow = window.open("https://medhapatil.github.io/sorting/", "myWindow", "width=1200, height=600");
-  setTimeout(function(){ myWindow.close()
-    if (condCount < 6) {
-        autInit();
-    } else {
-        var hiddenElement = document.createElement('a');
-        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-        hiddenElement.target = '_blank';
-        hiddenElement.download = 'data.csv';
-        hiddenElement.click();
-        document.getElementById('formDiv').innerHTML = "";
-        document.getElementById('question').innerHTML = "Thank you. Please close this window.";
-    } }, sortTimes[condCount]);
-}
-
 
 </script>
 
 </body>
 </html>
-
